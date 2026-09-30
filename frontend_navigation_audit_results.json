@@ -1,0 +1,510 @@
+{
+  "total": 28,
+  "passed": 28,
+  "failed": 0,
+  "directPassed": 28,
+  "partial": 0,
+  "readiness": "READY",
+  "results": [
+    {
+      "section": "OVERVIEW",
+      "label": "Executive Overview",
+      "route": "/",
+      "component": "ExecutiveDashboard",
+      "method": "GET",
+      "api": "/risk/enterprise",
+      "status": "PASS",
+      "httpStatus": 200,
+      "apiSuccess": true,
+      "sampleDataKeys": [
+        "enterprise_risk_score",
+        "risk_level",
+        "expected_annual_loss",
+        "expected_annual_loss_label",
+        "modeled_loss_min"
+      ]
+    },
+    {
+      "section": "OVERVIEW",
+      "label": "CISO Command Center",
+      "route": "/ciso",
+      "component": "CISODashboard",
+      "method": "GET",
+      "api": "/ciso/decision",
+      "status": "PASS",
+      "httpStatus": 200,
+      "apiSuccess": true,
+      "sampleDataKeys": [
+        "current_modeled_risk_score",
+        "risk_level",
+        "historical_observed_loss",
+        "modeled_financial_exposure",
+        "predicted_future_exposure"
+      ]
+    },
+    {
+      "section": "OVERVIEW",
+      "label": "Executive Board",
+      "route": "/executive-board",
+      "component": "ExecutiveBoardView",
+      "method": "GET",
+      "api": "/ciso/decision",
+      "status": "PASS",
+      "httpStatus": 200,
+      "apiSuccess": true,
+      "sampleDataKeys": [
+        "current_modeled_risk_score",
+        "risk_level",
+        "historical_observed_loss",
+        "modeled_financial_exposure",
+        "predicted_future_exposure"
+      ]
+    },
+    {
+      "section": "RISK INTELLIGENCE",
+      "label": "Risk Dashboard",
+      "route": "/risk",
+      "component": "RiskHeatmap",
+      "method": "GET",
+      "api": "/risk/assets",
+      "status": "PASS",
+      "httpStatus": 200,
+      "apiSuccess": true,
+      "sampleDataKeys": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "section": "RISK INTELLIGENCE",
+      "label": "Risk History",
+      "route": "/risk-history",
+      "component": "RiskHistoryPage",
+      "method": "GET",
+      "api": "/risk/history",
+      "status": "PASS",
+      "httpStatus": 200,
+      "apiSuccess": true,
+      "sampleDataKeys": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "section": "RISK INTELLIGENCE",
+      "label": "Attack Paths",
+      "route": "/attack-paths",
+      "component": "AttackPaths",
+      "method": "GET",
+      "api": "/attack-paths/graph",
+      "status": "PASS",
+      "httpStatus": 200,
+      "apiSuccess": true,
+      "sampleDataKeys": [
+        "id",
+        "name",
+        "path_tag",
+        "start_point",
+        "target_asset"
+      ]
+    },
+    {
+      "section": "RISK INTELLIGENCE",
+      "label": "Real-World Scenario Lab",
+      "route": "/scenario-lab",
+      "component": "RealWorldScenarioLab",
+      "method": "GET",
+      "api": "/real-world-scenarios/catalog",
+      "status": "PASS",
+      "httpStatus": 200,
+      "apiSuccess": true,
+      "sampleDataKeys": [
+        "catalog",
+        "total_scenarios",
+        "authoritative_sources",
+        "policy"
+      ]
+    },
+    {
+      "section": "RISK INTELLIGENCE",
+      "label": "Incident & Loss Intelligence",
+      "route": "/incidents",
+      "component": "IncidentLossIntelligence",
+      "method": "GET",
+      "api": "/incidents",
+      "status": "PASS",
+      "httpStatus": 200,
+      "apiSuccess": true,
+      "sampleDataKeys": [
+        "total_records",
+        "data_classification",
+        "incidents"
+      ]
+    },
+    {
+      "section": "ENTERPRISE DATA",
+      "label": "Data Management",
+      "route": "/data-management",
+      "component": "DataManagement",
+      "method": "GET",
+      "api": "/universal-import/datasets",
+      "status": "PASS",
+      "httpStatus": 200,
+      "apiSuccess": true,
+      "sampleDataKeys": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "section": "ENTERPRISE DATA",
+      "label": "Asset Inventory",
+      "route": "/assets",
+      "component": "AssetInventory",
+      "method": "GET",
+      "api": "/assets",
+      "status": "PASS",
+      "httpStatus": 200,
+      "apiSuccess": true,
+      "sampleDataKeys": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "section": "ENTERPRISE DATA",
+      "label": "Vulnerabilities",
+      "route": "/vulnerabilities",
+      "component": "VulnerabilityManagement",
+      "method": "GET",
+      "api": "/vulnerabilities",
+      "status": "PASS",
+      "httpStatus": 200,
+      "apiSuccess": true,
+      "sampleDataKeys": [
+        "items",
+        "stats"
+      ]
+    },
+    {
+      "section": "ENTERPRISE DATA",
+      "label": "Threat Intelligence",
+      "route": "/threat-intelligence",
+      "component": "ThreatIntelligence",
+      "method": "GET",
+      "api": "/threats",
+      "status": "PASS",
+      "httpStatus": 200,
+      "apiSuccess": true,
+      "sampleDataKeys": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    {
+      "section": "ENTERPRISE DATA",
+      "label": "Security Controls",
+      "route": "/security-controls",
+      "component": "SecurityControls",
+      "method": "GET",
+      "api": "/controls",
+      "status": "PASS",
+      "httpStatus": 200,
+      "apiSuccess": true,
+      "sampleDataKeys": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "section": "FINANCIAL RISK",
+      "label": "Financial Risk",
+      "route": "/financial-risk",
+      "component": "FinancialExposure",
+      "method": "GET",
+      "api": "/financial/enterprise",
+      "status": "PASS",
+      "httpStatus": 200,
+      "apiSuccess": true,
+      "sampleDataKeys": [
+        "actual_observed_loss",
+        "modeled_financial_exposure",
+        "predicted_future_exposure",
+        "simulated_benchmark",
+        "expected_annual_loss"
+      ]
+    },
+    {
+      "section": "FINANCIAL RISK",
+      "label": "Monte Carlo",
+      "route": "/monte-carlo",
+      "component": "MonteCarloPage",
+      "method": "GET",
+      "api": "/financial/monte-carlo?iterations=1000",
+      "status": "PASS",
+      "httpStatus": 200,
+      "apiSuccess": true,
+      "sampleDataKeys": [
+        "num_iterations",
+        "modeled_label",
+        "mean_expected_loss",
+        "mean",
+        "mean_loss"
+      ]
+    },
+    {
+      "section": "FINANCIAL RISK",
+      "label": "Risk Appetite",
+      "route": "/risk-appetite",
+      "component": "RiskAppetitePage",
+      "method": "GET",
+      "api": "/organizations/current",
+      "status": "PASS",
+      "httpStatus": 200,
+      "apiSuccess": true,
+      "sampleDataKeys": [
+        "industry",
+        "financial_assumptions",
+        "country",
+        "created_at",
+        "employee_count"
+      ]
+    },
+    {
+      "section": "AI & ANALYTICS",
+      "label": "Future Risk",
+      "route": "/future-risk",
+      "component": "FutureRiskPage",
+      "method": "GET",
+      "api": "/ai/predictions",
+      "status": "PASS",
+      "httpStatus": 200,
+      "apiSuccess": true,
+      "sampleDataKeys": [
+        "status",
+        "asset_id",
+        "model_used",
+        "baseline_comparison",
+        "model_version"
+      ]
+    },
+    {
+      "section": "AI & ANALYTICS",
+      "label": "Explainable AI",
+      "route": "/explainable-ai",
+      "component": "ExplainableAIPage",
+      "method": "GET",
+      "api": "/ai/predictions",
+      "status": "PASS",
+      "httpStatus": 200,
+      "apiSuccess": true,
+      "sampleDataKeys": [
+        "status",
+        "asset_id",
+        "model_used",
+        "baseline_comparison",
+        "model_version"
+      ]
+    },
+    {
+      "section": "AI & ANALYTICS",
+      "label": "Scenario Analysis",
+      "route": "/scenario-analysis",
+      "component": "WhatIfSimulator",
+      "method": "GET",
+      "api": "/scenarios/interventions",
+      "status": "PASS",
+      "httpStatus": 200,
+      "apiSuccess": true,
+      "sampleDataKeys": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "section": "INVESTMENT",
+      "label": "Investment Optimizer",
+      "route": "/investment-optimizer",
+      "component": "InvestmentOptimizer",
+      "method": "POST",
+      "api": "/optimization/run",
+      "body": {
+        "budget": 10000000
+      },
+      "status": "PASS",
+      "httpStatus": 200,
+      "apiSuccess": true,
+      "sampleDataKeys": [
+        "run_id",
+        "selected_controls",
+        "total_investment",
+        "available_budget",
+        "remaining_budget"
+      ]
+    },
+    {
+      "section": "INVESTMENT",
+      "label": "Budget Stress Test",
+      "route": "/budget-stress-test",
+      "component": "BudgetStressTestPage",
+      "method": "GET",
+      "api": "/optimization/stress-test",
+      "status": "PASS",
+      "httpStatus": 200,
+      "apiSuccess": true,
+      "sampleDataKeys": [
+        "stress_test_curve",
+        "diminishing_returns_analysis",
+        "current_enterprise_risk",
+        "current_risk_label",
+        "modeled_label"
+      ]
+    },
+    {
+      "section": "GOVERNANCE",
+      "label": "CISO Decisions",
+      "route": "/ciso-decisions",
+      "component": "CISODecisionsPage",
+      "method": "GET",
+      "api": "/ciso/decision",
+      "status": "PASS",
+      "httpStatus": 200,
+      "apiSuccess": true,
+      "sampleDataKeys": [
+        "current_modeled_risk_score",
+        "risk_level",
+        "historical_observed_loss",
+        "modeled_financial_exposure",
+        "predicted_future_exposure"
+      ]
+    },
+    {
+      "section": "GOVERNANCE",
+      "label": "Audit Trail",
+      "route": "/audit-trail",
+      "component": "AuditorDashboard",
+      "method": "GET",
+      "api": "/blockchain/blocks",
+      "status": "PASS",
+      "httpStatus": 200,
+      "apiSuccess": true,
+      "sampleDataKeys": [
+        "network",
+        "total_blocks",
+        "blocks",
+        "disclaimer"
+      ]
+    },
+    {
+      "section": "GOVERNANCE",
+      "label": "Blockchain Audit",
+      "route": "/blockchain-audit",
+      "component": "BlockchainAudit",
+      "method": "GET",
+      "api": "/blockchain/blocks",
+      "status": "PASS",
+      "httpStatus": 200,
+      "apiSuccess": true,
+      "sampleDataKeys": [
+        "network",
+        "total_blocks",
+        "blocks",
+        "disclaimer"
+      ]
+    },
+    {
+      "section": "GOVERNANCE",
+      "label": "Compliance",
+      "route": "/compliance",
+      "component": "ComplianceMatrix",
+      "method": "GET",
+      "api": "/compliance",
+      "status": "PASS",
+      "httpStatus": 200,
+      "apiSuccess": true,
+      "sampleDataKeys": [
+        "modeled_label",
+        "overall_compliance_score",
+        "total_evaluated_controls",
+        "compliant_count",
+        "gap_count"
+      ]
+    },
+    {
+      "section": "GOVERNANCE",
+      "label": "Reports",
+      "route": "/reports",
+      "component": "ExecutiveReports",
+      "method": "POST",
+      "api": "/reports/generate",
+      "body": {
+        "report_type": "BOARD_QUARTERLY"
+      },
+      "status": "PASS",
+      "httpStatus": 200,
+      "apiSuccess": true,
+      "sampleDataKeys": [
+        "report_type",
+        "title",
+        "organization_name",
+        "generated_at",
+        "generated_by"
+      ]
+    },
+    {
+      "section": "SIH FINAL DEMO",
+      "label": "SIH Final Demo",
+      "route": "/sih-demo",
+      "component": "SIHFinalDemoPage",
+      "method": "GET",
+      "api": "/demo/steps",
+      "status": "PASS",
+      "httpStatus": 200,
+      "apiSuccess": true,
+      "sampleDataKeys": [
+        "total_steps",
+        "current_active_step",
+        "steps",
+        "storyline"
+      ]
+    },
+    {
+      "section": "SYSTEM",
+      "label": "System Health",
+      "route": "/system-status",
+      "component": "SystemStatusPage",
+      "method": "GET",
+      "api": "/health",
+      "status": "PASS",
+      "httpStatus": 200,
+      "apiSuccess": true,
+      "sampleDataKeys": [
+        "status",
+        "database",
+        "service",
+        "version",
+        "components"
+      ]
+    }
+  ]
+}

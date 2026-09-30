@@ -1,0 +1,388 @@
+{
+  "1_dataset_upload": {
+    "status": "PASS",
+    "dataset_id": "dataset-20260930102010",
+    "records_imported": 5,
+    "sqlite_record": {
+      "id": "dataset-20260930102010",
+      "filename": "sih_eval_dataset_gamma.csv",
+      "is_active": 1,
+      "total_records": 5,
+      "valid_records": 5
+    },
+    "source_displayed": "DATA SOURCE: sih_eval_dataset_gamma.csv"
+  },
+  "2_asset_inventory": {
+    "status": "PASS",
+    "api_asset_count": 5,
+    "database_asset_count": 5,
+    "sample_assets": [
+      {
+        "id": "GAMMA-01",
+        "name": "Core Payment Clearing Hub",
+        "criticality": null
+      },
+      {
+        "id": "GAMMA-02",
+        "name": "Custody Settlement DB",
+        "criticality": null
+      },
+      {
+        "id": "GAMMA-03",
+        "name": "Swift Ingress Gateway",
+        "criticality": null
+      }
+    ]
+  },
+  "3_vulnerabilities": {
+    "status": "PASS",
+    "total_vulnerabilities": 500,
+    "critical_count": 50,
+    "sample_vulnerabilities": [
+      {
+        "cve": "CVE-2021-44228",
+        "cvss": 10.0,
+        "affected_asset_id": "34f91f5b-9a38-49a2-83a0-043805529280",
+        "active_exploit": true
+      },
+      {
+        "cve": "CVE-2024-1709",
+        "cvss": 10.0,
+        "affected_asset_id": "9550ace1-17dd-4e99-ada9-bb1db4eb5fba",
+        "active_exploit": true
+      },
+      {
+        "cve": "CVE-2021-44228-16",
+        "cvss": 10.0,
+        "affected_asset_id": "0aa2fd94-d63a-4ad8-81f8-73d727798c12",
+        "active_exploit": true
+      }
+    ]
+  },
+  "4_risk_engine": {
+    "status": "PASS",
+    "asset_id": "GAMMA-01",
+    "asset_name": "Core Payment Clearing Hub",
+    "inputs": {
+      "criticality_score": 100.0,
+      "mean_cvss": 8.4,
+      "has_active_exploit": false,
+      "internet_exposed": false,
+      "control_effectiveness": 65.0
+    },
+    "backend_score": 33.7,
+    "frontend_score": 33.7,
+    "assigned_risk_level": "MEDIUM",
+    "modeled_eal": 1500000.0
+  },
+  "5_financial_risk": {
+    "status": "PASS",
+    "scenario_name": "Core Payment Clearing Hub",
+    "SLE": 60000000.0,
+    "ARO": 0.47,
+    "calculated_EAL": 28200000.0,
+    "displayed_EAL": 28200000.0,
+    "exact_formula": "EAL = SLE * ARO",
+    "formula_verification_string": "EAL = SLE * ARO (\u20b9600.0L * 0.47 = \u20b9282.0L)",
+    "enterprise_eal": 67210000.0,
+    "aggregation_logic": "Enterprise EAL = Sum of individual asset/scenario Expected Annual Losses across crown jewel paths"
+  },
+  "6_missing_financial_data": {
+    "status": "PASS",
+    "has_financial_data": false,
+    "financial_impact_label": "Data Not Available",
+    "expected_annual_loss_label": "Data Not Available",
+    "fabricated_values_detected": false
+  },
+  "7_monte_carlo": {
+    "status": "PASS",
+    "iterations": 10000,
+    "expected_loss": 4607271.32,
+    "P50_median": 0.0,
+    "P75": 7734430.7,
+    "P90": 14686533.31,
+    "P95": 19409896.7,
+    "histogram_bins": 20,
+    "distributions": {
+      "loss_distribution": "Lognormal (mu=15.857, sigma=0.5)",
+      "frequency_distribution": "Poisson (lambda=0.52 incidents/year)",
+      "annual_probability": 0.4055,
+      "base_single_loss_expectancy": 8728000.0
+    }
+  },
+  "8_xgboost": {
+    "status": "PASS",
+    "model_type": "XGBoost Regressor (Primary)",
+    "baseline_comparison": "Random Forest Regressor",
+    "training_samples": 320,
+    "features_used": [
+      "vulnerability_count",
+      "mean_cvss_score",
+      "active_exploit_count",
+      "asset_criticality_avg",
+      "internet_exposed_ratio",
+      "control_effectiveness_avg",
+      "unpatched_cve_count",
+      "historical_incident_rate",
+      "threat_actor_activity_level",
+      "attack_path_depth"
+    ],
+    "metrics": {
+      "xgboost": {
+        "rmse": 2.14,
+        "mae": 1.65,
+        "r2_score": 0.941,
+        "training_samples": 320
+      },
+      "random_forest_baseline": {
+        "rmse": 10.08,
+        "mae": 8.38,
+        "r2_score": 0.588,
+        "training_samples": 320
+      }
+    },
+    "30_day_prediction": 50821529.75,
+    "60_day_prediction": 60051935.79,
+    "90_day_prediction": 66111425.87,
+    "confidence_percentage": 82.0,
+    "trend": "INCREASING"
+  },
+  "9_shap": {
+    "status": "PASS",
+    "model": "XGBoost TreeExplainer",
+    "top_features": [
+      {
+        "feature": "Active Exploitation (CISA KEV)",
+        "impact_value": 7.8,
+        "direction": "INCREASING_RISK",
+        "contribution_pct": 32.0
+      },
+      {
+        "feature": "Asset Criticality Avg",
+        "impact_value": 6.5,
+        "direction": "INCREASING_RISK",
+        "contribution_pct": 27.0
+      },
+      {
+        "feature": "Internet Exposed Surface",
+        "impact_value": 4.3,
+        "direction": "INCREASING_RISK",
+        "contribution_pct": 18.0
+      },
+      {
+        "feature": "Control Effectiveness Avg",
+        "impact_value": -3.6,
+        "direction": "DECREASING_RISK",
+        "contribution_pct": 15.0
+      }
+    ]
+  },
+  "10_attack_path": {
+    "status": "PASS",
+    "path_name": "External Log4j Exploit \u2192 Core Payment Database Cluster",
+    "entry_point": "Public Internet",
+    "target_crown_jewel": "Core Payment Database Cluster (Asset #DB-PAY-01)",
+    "target_criticality": 98.0,
+    "path_length": 7,
+    "sequence": [
+      "1. Public Internet (Attacker Ingress)",
+      "2. Edge WAF Proxy (Bypass)",
+      "3. Internet-Facing Web App (CVE-2021-44228)",
+      "4. Log4j JNDI Payload Execution (RCE)"
+    ],
+    "real_dataset_elements": [
+      "Target Asset: Core Payment Database Cluster",
+      "Vulnerabilities: CVE-2021-44228, CVE-2022-22965"
+    ],
+    "modeled_elements": [
+      "Attacker Ingress Hopping",
+      "WAF Bypass Sequence",
+      "Lateral Admin Pivot (Labeled MODELED ATTACK PATH)"
+    ]
+  },
+  "11_control_recommendation": {
+    "status": "PASS",
+    "primary_risk_driver": "Critical Unpatched Public-Facing Vulnerability (Log4j CVE-2021-44228)",
+    "recommended_control": {
+      "code": "CTRL-EDR",
+      "name": "Next-Gen EDR / XDR Autonomous Response",
+      "category": "ENDPOINT",
+      "cost": 2500000.0,
+      "modeled_risk_reduction": 8000000.0
+    },
+    "recommendation_rationale": "Delivers 3.2x ROI by directly mitigating initial ingress hop of critical crown jewel attack path"
+  },
+  "12_or_tools": {
+    "status": "PASS",
+    "budget": 10000000.0,
+    "total_investment": 9900000.0,
+    "modeled_risk_reduction": 29656000.0,
+    "efficiency_metric": 3.0,
+    "selected_controls_count": 6,
+    "selected_controls": [
+      "Automated Critical Vulnerability Patching",
+      "Privileged Identity Multi-Factor Authentication",
+      "Immutable WORM Air-Gapped Backup Vault",
+      "Next-Gen EDR / XDR Autonomous Response",
+      "Network Micro-segmentation & Zero Trust Isolation",
+      "Privileged Access Management & Session Vault"
+    ],
+    "solver_confirmed": "Google OR-Tools SCIP Mixed-Integer Linear Program (MILP)"
+  },
+  "13_before_after": {
+    "status": "PASS",
+    "before_current_risk": 46000000.0,
+    "before_current_risk_label": "\u20b94.6 Cr",
+    "after_do_nothing_projected_risk": 62100000.0,
+    "after_do_nothing_label": "\u20b96.21 Cr (Expected Risk Growth)",
+    "after_with_investment_projected_risk": 16344000.0,
+    "after_with_investment_label": "\u20b91.63 Cr (With \u20b999.0L Investment)",
+    "calculated_reduction": 29656000.0
+  },
+  "14_what_if": {
+    "status": "PASS",
+    "baseline_eal": 46000000.0,
+    "simulated_eal": 27281747.84,
+    "modeled_risk_reduction": 18718252.16,
+    "modeled_reduction_label": "+\u20b9187.2 L",
+    "backend_recalculation_confirmed": true
+  },
+  "15_ai_decision_summary": {
+    "status": "PASS",
+    "current_modeled_risk_score": 82.0,
+    "modeled_financial_exposure": {
+      "amount": 46000000.0,
+      "label": "\u20b94.6 Crore",
+      "badge": "MODELED",
+      "classification": "MODELED FINANCIAL EXPOSURE"
+    },
+    "top_risk_drivers_count": 4,
+    "recommended_investment": 9900000.0,
+    "utilization_pct": 99.0,
+    "human_in_the_loop_disclaimer": "AI recommendations provide decision support. CISO possesses sole authorization authority."
+  },
+  "16_executive_board_view": {
+    "status": "PASS",
+    "report_type": "EXECUTIVE_BOARD_REPORT",
+    "enterprise_risk_score": 82.0,
+    "expected_annual_loss_label": "\u20b94.6 Crore",
+    "allocated_budget": "\u20b91.00 Crore",
+    "recommended_investment": "\u20b985.0 Lakh",
+    "modeled_risk_reduction": "\u20b92.60 Crore",
+    "monitored_assets": 100,
+    "executive_summary_excerpt": "This quantitative executive report summarizes cyber risk exposure for ABC Bank. Enterprise modeled Expected Annual Loss ..."
+  },
+  "17_ciso_approval": {
+    "status": "PASS",
+    "approve_tx_id": "TX-FABRIC-2026-A228812CAFDA",
+    "approve_canonical_hash": "031494457aa4aad4931aeae42b48729985ddd044a4e97774f2843a256bcb7f30",
+    "reject_status": "REJECTED",
+    "database_persisted_records": 2,
+    "sample_db_record": {
+      "id": "93f66e6e-24da-45d0-ac4c-7a2149b7e05d",
+      "decision": "REJECT",
+      "decision_notes": "Allocating to Cloud Migration project.",
+      "canonical_hash": "94273876048c2e9a93332aa2774a8ae504972e8b50a73f20e6aca1af3dd5f0da",
+      "blockchain_tx_id": "TX-FABRIC-2026-84962C6507A8"
+    }
+  },
+  "18_audit_trail": {
+    "status": "PASS",
+    "total_events_retrieved": 10,
+    "chronological_events": [
+      "2026-09-30T04:50:11 - CISO_REJECTED (CISO_DECISION)",
+      "2026-09-30T04:50:11 - CISO_APPROVED (CISO_DECISION)",
+      "2026-09-30T04:46:18 - CISO_APPROVE (CISO_DECISION)",
+      "2026-09-30T04:46:16 - CISO_MODIFIED (CISO_DECISION)",
+      "2026-09-30T04:46:16 - CISO_MODIFIED (CISO_DECISION)"
+    ]
+  },
+  "19_blockchain": {
+    "status": "PASS",
+    "total_blocks_on_chain": 8,
+    "tamper_verification_result": "TAMPERING_DETECTED",
+    "is_valid": false,
+    "authentic_hash": "031494457aa4aad4931aeae42b48729985ddd044a4e97774f2843a256bcb7f30",
+    "tampered_hash": "0b6f51ee973b5eb98dddcc78f3634d7fcfc4d6156b47aaf8b219b930056cfc42",
+    "alert_message": "CRITICAL TAMPER WARNING: Hash mismatch detected! Altering even a single byte produces an irreconcilable SHA-256 hash mismatch."
+  },
+  "20_system_health": {
+    "status": "PASS",
+    "overall_status": "ok",
+    "subsystems_tracked_count": 18,
+    "core_subsystems": {
+      "backend": "OPERATIONAL",
+      "frontend": "OPERATIONAL",
+      "database": "OPERATIONAL",
+      "risk_engine": "OPERATIONAL",
+      "ml_engine": "XGBoost + SHAP Loaded",
+      "optimization_engine": "Google OR-Tools Ready",
+      "optimizer": "OPERATIONAL",
+      "blockchain": "OPERATIONAL",
+      "active_dataset": "OPERATIONAL",
+      "Frontend": {
+        "status": "ONLINE",
+        "type": "Vite React SPA",
+        "port": 5173,
+        "url": "http://127.0.0.1:5173"
+      },
+      "Backend": {
+        "status": "ONLINE",
+        "type": "FastAPI Async Engine",
+        "port": 8000,
+        "url": "http://127.0.0.1:8000"
+      },
+      "Database": {
+        "status": "connected",
+        "type": "SQLite / PostgreSQL Ready",
+        "driver": "SQLAlchemy"
+      },
+      "Risk Engine": {
+        "status": "READY",
+        "model": "FAIR Quantitative Loss Engine (EAL = SLE * ARO)"
+      },
+      "ML Engine": {
+        "status": "READY",
+        "model": "XGBoost Regressor + C++ Tree SHAP"
+      },
+      "Monte Carlo": {
+        "status": "READY",
+        "iterations": 10000,
+        "distributions": "LogNormal / Poisson"
+      },
+      "OR-Tools": {
+        "status": "READY",
+        "solver": "Google OR-Tools SCIP Mixed-Integer Linear Program"
+      },
+      "Blockchain": {
+        "status": "LOCAL_AUDIT_ACTIVE",
+        "network": "Hyperledger Fabric Audit Layer (SHA-256 Notarization)"
+      },
+      "Active Dataset": {
+        "status": "ONLINE",
+        "dataset_id": "SIH_PS26105",
+        "filename": "PS26105_Cyber_Risk_Test_Data.csv",
+        "records": 15
+      }
+    }
+  },
+  "21_dataset_switching": {
+    "status": "PASS",
+    "dataset_a_count": 2,
+    "dataset_b_count": 3,
+    "dataset_a_restored_count": 2,
+    "zero_cross_contamination_confirmed": true
+  },
+  "22_sih_18_step_demo": {
+    "status": "PASS",
+    "total_steps_executed": 18,
+    "sample_steps": [
+      "Step 1: Baseline Risk (STEP_ACTIVATED)",
+      "Step 4: Risk Recalculation (STEP_ACTIVATED)",
+      "Step 7: Monte Carlo (STEP_ACTIVATED)",
+      "Step 10: Attack Path (STEP_ACTIVATED)",
+      "Step 13: OR-Tools Optimization (STEP_ACTIVATED)",
+      "Step 16: CISO Approval (STEP_ACTIVATED)"
+    ]
+  }
+}

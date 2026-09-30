@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+backend/.venv/
+.venv/
+env/
+venv/
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+backend/.env
+frontend/.env
+
+# Build outputs
+dist/
+dist-ssr/
+frontend/dist/
+*.egg-info/
+
+# Python Cache & Testing
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Databases & local run artifacts
+*.db
+*.sqlite3
+*.log
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
