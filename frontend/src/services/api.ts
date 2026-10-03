@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Dynamically align API base URL with the active frontend loopback origin (127.0.0.1 or localhost)
 const getBaseApiUrl = (): string => {
-  const envUrl = import.meta.env.VITE_API_URL;
+  const envUrl = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_BASE_URL;
   if (typeof window !== 'undefined' && window.location.hostname) {
     const currentHost = window.location.hostname; // '127.0.0.1' or 'localhost'
     if (envUrl) {
