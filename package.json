@@ -2,6 +2,9 @@
   "name": "quantum-risk-ai",
   "version": "2.5.0",
   "description": "AI-Powered Continuous Cyber Risk Quantification & Investment Optimization Platform (SIH 2026 Final Round)",
+  "engines": {
+    "node": ">=20.19.0"
+  },
   "scripts": {
     "start": "powershell -ExecutionPolicy Bypass -File ./run_all.ps1",
     "start:dev": "powershell -ExecutionPolicy Bypass -File ./run_all.ps1",
