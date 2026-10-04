@@ -455,6 +455,7 @@ def seed_database():
             ("Lazarus Group (APT38)", "Financial Wire & Swift Fraud", "T1078 - Valid Accounts Lateral Movement", "CRITICAL", True, ["CVE-2024-21762"]),
             ("Anonymous Sudan / Killnet", "Distributed Denial of Service (DDoS)", "T1498 - Network Denial of Service", "HIGH", False, ["CVE-2023-44487"])
         ]
+        created_threats = []
         for actor, ttype, tech, sev, active, cves in threats_data:
             threat = Threat(
                 organization_id=org.id,

@@ -1,4 +1,5 @@
 import os
+import threading
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
@@ -62,8 +63,7 @@ trusted_origins = [
     "http://localhost:8000",
     "http://127.0.0.1:8000"
 ]
-if settings.CORS_ORIGINS and "*" not in settings.CORS_ORIGINS:
-    trusted_origins = list(set(trusted_origins + settings.CORS_ORIGINS))
+trusted_origins = list(dict.fromkeys(trusted_origins + settings.cors_origin_list()))
 
 app.add_middleware(
     CORSMiddleware,

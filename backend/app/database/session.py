@@ -4,6 +4,17 @@ from sqlalchemy.orm import declarative_base, sessionmaker
 from sqlalchemy import create_engine
 from app.core.config import settings
 
+def _ensure_sqlite_directory(url: str) -> None:
+    if "sqlite" not in url or ":memory:" in url:
+        return
+    path = url.split(":///")[-1]
+    directory = os.path.dirname(path)
+    if directory:
+        os.makedirs(directory, exist_ok=True)
+
+_ensure_sqlite_directory(settings.SYNC_DATABASE_URL)
+_ensure_sqlite_directory(settings.DATABASE_URL)
+
 # Async Engine (for FastAPI async request handlers)
 async_engine = create_async_engine(
     settings.DATABASE_URL,
